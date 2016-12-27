@@ -110,13 +110,13 @@ IF TEST is specified run mocha with a grep for just that test."
          (options (concat options (concat " --reporter " mocha-reporter)))
          (opts-file (mocha-opts-file path)))
     (when opts-file
-      (setq options (concat options (if opts-file (concat " --opts " opts-file)))))
+      (setq options (concat options (if opts-file (concat " --opts " "'" opts-file "'")))))
     (concat mocha-environment-variables " "
             node-command " "
             mocha-command " "
             options " "
-            target
-            path)))
+            target " "
+            "'" path "'")))
 
 (defun mocha-debug (&optional mocha-file test)
   "Debug mocha using realgud.
